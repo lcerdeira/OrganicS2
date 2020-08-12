@@ -1,0 +1,29 @@
+<section id="burg_holders">
+  <div class="container">
+      {{> alerts/alerts-block}}
+    <div class="row">
+      <div class="col-12 col-md-6  d-flex flex-column">
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="card-header-text text-center">Burger Not Yet Eaten!</h5>
+          </div>
+          <div class="card-block burger-box pl-4">
+            {{#each burger}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6  d-flex  flex-column">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-header-text text-center">Eaten Burgers!</h5>
+          </div>
+          <div class="card-block burger-box pl-4">
+            {{#each burger}} {{#if devoured}} {{> burgers/burger-block devoured=false}} {{/if}} {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{> modals/modal-block}}

@@ -1,0 +1,27 @@
+<div class="media my-1 text-center">
+	<a class="media-left" href="#!">
+		<img class="media-object img-radius" src="img/hamburger_icon.png" alt="Generic placeholder image" data-toggle="tooltip" data-placement="top"
+		 title="" data-original-title="user image">
+	</a>
+	<div class="media-body">
+		<div class="row flex-row">
+			<div class="col-4 col-md-6 py-3">
+				<div class="chat-header todo-item-{{this.id}}"><span>{{name}}</span></div>
+			</div>
+			<div class="col-8 col-md-6 py-2">
+				<button class="devoured change-devoured btn btn-info text-white" data-id="{{id}}" data-newdevoured="{{devoured}}">
+					{{#if devoured}}Eat!{{else}}Vomit!{{/if}}
+				</button>
+				<button class="edit-burger btn btn-primary" data-id="{{this.id}}">
+					<i class="fa fa-edit" aria-hidden="true"></i>
+				</button>
+				<button class="save-burger btn btn-success d-none" data-id="{{this.id}}">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</button>
+				<button class="delete-burger btn btn-danger" data-id="{{this.id}}">
+					<i class="fa fa-trash" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
