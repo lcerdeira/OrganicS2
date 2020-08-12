@@ -1,4 +1,4 @@
-#Temporary_name-APvP
+#Temporary_name-APP
 > ### Example of using MYSQL with an ORM on an Expressjs server using Nodejs with the MVC model. This application performes all CRUD operations to a MYSQL database. 
 
 ## Project Overview
@@ -7,7 +7,7 @@ This app allows you ......
 
 # View Demo  
 
-To view demo click on this link: ([Heroku Demo Link]())
+To view demo click on this link: ([https://p2idea.herokuapp.com/]())
 
 # Getting Started Locally 
 
