@@ -1,6 +1,6 @@
-INSERT INTO burgers (name) VALUES ('Meeses');
-INSERT INTO burgers (name) VALUES ('Bobbi');
-INSERT INTO burgers (name, devoured) VALUES ('Sylvester', true);
-INSERT INTO burgers (name, devoured) VALUES ('Marilyn Manson', true);
-INSERT INTO burgers (name, devoured) VALUES ('Joe Biden', true);
-INSERT INTO burgers (name) VALUES ('Owens');
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Meeses',false,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Bobbi',false,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Sylvester', true,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Marilyn Manson', true,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Joe Biden', true,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO burgers (name, devoured, createdAt, updatedAt)  VALUES ('Owens',false,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
