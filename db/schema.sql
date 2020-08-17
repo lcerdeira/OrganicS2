@@ -1,26 +1,13 @@
--- OUTDATED - TABLE IS CREATED USING _TABLE.JS FILES IN MODELS
--- Local
-DROP database if EXISTS burgers_db;
-CREATE DATABASE burgers_db;
-USE burgers_db;
+DROP DATABASE IF EXISTS farmers_market;
 
-CREATE TABLE burgers
-(
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	devoured BOOLEAN DEFAULT false,
-	PRIMARY KEY (id)
-);
+CREATE DATABASE farmers_market;
 
--- JawsDB
-DROP database if EXISTS g414tvzeppuo65yi;
-CREATE DATABASE g414tvzeppuo65yi;
-USE g414tvzeppuo65yi;
+USE farmers_market;
 
-CREATE TABLE burgers
-(
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	devoured BOOLEAN DEFAULT false,
-	PRIMARY KEY (id)
+CREATE TABLE burgers (
+  id INT NOT NULL AUTO_INCREMENT,
+  burger_name VARCHAR(30) NULL,
+  devoured boolean not null,
+  createdAt TIMESTAMP NOT NULL DEFAULT current_timestamp,
+  PRIMARY KEY (id)
 );
