@@ -1,6 +1,3 @@
-#Temporary_name-APvP
-
-
 ## Project Overview
 
 This app allows you create an organic food Ads  Shopping Cart
@@ -12,7 +9,7 @@ This app allows you create an organic food Ads  Shopping Cart
 
 # View Demo  
 
-To view demo click on this link: ([Heroku Demo Link]())
+To view demo click on this link: ([https://p2idea.herokuapp.com/]())
 
 # Getting Started Locally 
 
