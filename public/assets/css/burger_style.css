@@ -1,0 +1,46 @@
+html body {
+  background-color: rgb(251, 188, 31);
+  color: black;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: rgb(88, 109, 204);
+}
+.input-form {
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+li {
+  font-size: 2em;
+  padding: 20px;
+  margin: 3px;
+  border-radius: 40%;
+  background-color: rgb(182, 135, 49);
+  text-align: center;
+}
+
+.form-control {
+  text-align: center;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+.devour {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
