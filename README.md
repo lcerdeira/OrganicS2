@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-This app allows you create a organic food ShopCart
+This app allows you create an organic food Ads  Shopping Cart
 
 
 * MYSQL with an ORM(sequelize) on an Expressjs server using Nodejs with the MVC model. 
