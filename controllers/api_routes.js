@@ -9,28 +9,6 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-router.get("/", (req, res) => {
-  // If the user already has an account send them to the members page
-
-  if (req.user) {
-    res.redirect("/members");
-  }
-  res.sendFile(path.join(__dirname, "../public/assets/signup.html"));
-});
-
-router.get("/login", (req, res) => {
-  // If the user already has an account send them to the members page
-  if (req.user) {
-    res.redirect("/members");
-  }
-  res.sendFile(path.join(__dirname, "../public/assets/login.html"));
-});
-
-// Here we've add our isAuthenticated middleware to this route.
-// If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get("/members", isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/assets/members.html"));
-});
 
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
@@ -80,15 +58,6 @@ router.get("/api/user_data", (req, res) => {
   }
 });
 
-// Main page
-router.get("/burgers", isAuthenticated, (req, res) => {
-  burger.all(data => {
-    const burgerObj = {
-      burgers: data
-    };
-    res.render("index", burgerObj);
-  });
-});
 
 // Change burger state to devoured
 router.put("/api/burgers/:id", isAuthenticated, (req, res) => {

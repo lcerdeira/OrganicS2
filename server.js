@@ -21,9 +21,11 @@ app.use(passport.session());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 //Import routes
-const routes = require("./controllers/burger_controller.js");
+const htmlRoutes = require("./controllers/html_routes.js");
+const apiRoutes = require("./controllers/api_routes.js");
 
-app.use(routes);
+app.use(htmlRoutes);
+app.use(apiRoutes);
 //Listen on port
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
