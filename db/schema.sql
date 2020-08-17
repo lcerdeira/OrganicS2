@@ -1,10 +1,13 @@
-CREATE DATABASE burgers_db;
-USE burgers_db;
+DROP DATABASE IF EXISTS farmers_market;
 
-CREATE TABLE burgers
-(
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	devoured BOOLEAN DEFAULT false,
-	PRIMARY KEY (id)
+CREATE DATABASE farmers_market;
+
+USE farmers_market;
+
+CREATE TABLE burgers (
+  id INT NOT NULL AUTO_INCREMENT,
+  burger_name VARCHAR(30) NULL,
+  devoured boolean not null,
+  createdAt TIMESTAMP NOT NULL DEFAULT current_timestamp,
+  PRIMARY KEY (id)
 );

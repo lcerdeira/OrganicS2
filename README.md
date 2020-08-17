@@ -1,9 +1,11 @@
-#Temporary_name-APP
-> ### Example of using MYSQL with an ORM on an Expressjs server using Nodejs with the MVC model. This application performes all CRUD operations to a MYSQL database. 
-
 ## Project Overview
 
-This app allows you ......
+This app allows you create an organic food Ads  Shopping Cart
+
+
+* MYSQL with an ORM(sequelize) on an Expressjs server using Nodejs with the MVC model. 
+* This application performes all CRUD operations into a MYSQL database. 
+
 
 # View Demo  
 

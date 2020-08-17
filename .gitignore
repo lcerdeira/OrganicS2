@@ -1,3 +1,4 @@
 node_modules/
+rough/
 .env
-.DS_Store
+homework_instructions.md
