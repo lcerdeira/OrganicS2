@@ -11,7 +11,6 @@ const insertQMarks = (count) => {
 // ORM with functions to Create, read and update
 const orm = {
   all: (tableName, cb) => {
-    console.log(tableName);
     const queryString = "SELECT * FROM " + tableName + ";";
     connection.query(queryString, (err, result) => {
       if (err) {
