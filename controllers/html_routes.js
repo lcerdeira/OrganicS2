@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
   if (req.user) {
     res.redirect("/members");
   }
-  res.sendFile(path.join(__dirname, "../public/assets/signup.html"));
+  res.sendFile(path.join(__dirname, "../public/assets/index.html"));
 });
 
 router.get("/login", (req, res) => {
