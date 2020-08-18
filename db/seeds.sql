@@ -1,3 +1,5 @@
+
+USE farmers_market;
 INSERT INTO burgers
     (burger_name, devoured)
 VALUES
@@ -5,7 +7,7 @@ VALUES
     ("The Fireside", FALSE),
     ("The Trucker", FALSE),
     ("The Fatman", FALSE),
-    ("The Wee Lad", TRUE)
+    ("The Wee Lad", TRUE);
 
 INSERT INTO Product_categories (category,createdAt,updatedAt) VALUES
 ("Organic Fresh Meat",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
@@ -23,6 +25,4 @@ A family favourite and great in salads, soups, juiced or simply cut up and enjoy
 ("Apples","organic-apples","Delicious Peninsula grown apples are grown without the use of chemicals.  They taste delicious!
 Great for a snack or for the lunch box.
 Mornington Peninsula Grown",4,"kg","http://place-hold.it/150",38,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,2);
-
-
 
