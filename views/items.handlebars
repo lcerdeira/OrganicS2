@@ -1,0 +1,39 @@
+<div class="container">
+<br>
+  <h1>Items</h1>
+<br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Items:</h2>
+        <ol>
+          {{#each items}}
+          {{#unless devoured }}
+          {{> devour/itemList devoured=false }}
+          {{/unless}}
+          {{/each}}
+        </ol>
+      </div>
+      <div class="col">
+        <h2>Placeholder:</h2>
+        <ol>
+          {{#each items}}
+          {{#if devoured}}
+          {{> devour/itemList devoured=true}}
+          {{/if}}
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+</div>

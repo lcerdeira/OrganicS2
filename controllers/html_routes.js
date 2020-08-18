@@ -26,7 +26,6 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/assets/login.html"));
 });
 
-
 router.get("/signup", (req, res) => {
   // If the user already has an account send them to the members page
   if (req.user) {
@@ -43,11 +42,33 @@ router.get("/members", isAuthenticated, (req, res) => {
 
 // Main page
 router.get("/burgers", isAuthenticated, (req, res) => {
-  burger.all(data => {
+  burger.all((data) => {
     const burgerObj = {
-      burgers: data
+      burgers: data,
     };
+    console.log(burgerObj);
     res.render("index", burgerObj);
+  });
+});
+
+router.get("/meat", (req, res) => {
+  let itemsArray = [];
+  db.Product.findAll({
+    where: {
+      ProductCategoryId: 1
+    }
+  }).then((data) => {
+    data.forEach((element) => {
+      let itemSet = {};
+      itemSet["item_name"] = element.dataValues.title;
+      itemSet["item_price"] = element.dataValues.price;
+      itemsArray.push(itemSet);
+    });
+    myObj = {
+      items: itemsArray,
+    };
+    console.log(myObj);
+    res.render("items", myObj);
   });
 });
 
