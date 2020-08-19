@@ -9,7 +9,14 @@ module.exports = function(sequelize, DataTypes) {
     stock: { type: DataTypes.INTEGER, allowNull: false },
   });
   Product.associate = function(models) {
+    //Product can be on many orders
     Product.belongsToMany(models.Order, { through: models.Order_product});
+    //Product belongs to one category
+    Product.belongsTo(models.Product_category, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Product;
 };

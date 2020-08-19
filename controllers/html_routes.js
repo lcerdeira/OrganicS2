@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
   if (req.user) {
     res.redirect("/members");
   }
-  res.sendFile(path.join(__dirname, "../public/assets/signup.html"));
+  res.sendFile(path.join(__dirname, "../public/assets/index.html"));
 });
 
 router.get("/login", (req, res) => {
@@ -26,6 +26,14 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/assets/login.html"));
 });
 
+router.get("/signup", (req, res) => {
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.sendFile(path.join(__dirname, "../public/assets/signup.html"));
+});
+
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/members", isAuthenticated, (req, res) => {
@@ -34,11 +42,44 @@ router.get("/members", isAuthenticated, (req, res) => {
 
 // Main page
 router.get("/burgers", isAuthenticated, (req, res) => {
-  burger.all(data => {
+  burger.all((data) => {
     const burgerObj = {
-      burgers: data
+      burgers: data,
     };
+    console.log(burgerObj);
     res.render("index", burgerObj);
+  });
+});
+
+router.get("/grocery/:category", (req, res) => {
+  let department = req.params.category;
+  const departmentIds = {
+    meat: 1,
+    greens: 2,
+    dairy: 3,
+  };
+
+  let departmentId = departmentIds[department];
+
+  let itemsArray = [];
+  db.Product.findAll({
+    where: {
+      ProductCategoryId: departmentId,
+    },
+    include: [db.Product_category],
+  }).then((data) => {
+    data.forEach((element) => {
+      let itemSet = {};
+      itemSet["item_name"] = element.dataValues.title;
+      itemSet["item_price"] = element.dataValues.price;
+      itemSet["item_unit"] = element.dataValues.unit;
+      
+      itemsArray.push(itemSet);
+    });
+    myObj = {
+      items: itemsArray,
+    };
+    res.render("items", myObj);
   });
 });
 

@@ -25,7 +25,7 @@
         <ol>
           {{#each burgers}}
           {{#unless devoured }}
-          {{> devour/devour-btn devoured=false }}
+          {{> templates/devour-btn devoured=false }}
           {{/unless}}
           {{/each}}
         </ol>
@@ -35,7 +35,7 @@
         <ol>
           {{#each burgers}}
           {{#if devoured}}
-          {{> devour/devour-btn devoured=true}}
+          {{> templates/devour-btn devoured=true}}
           {{/if}}
           {{/each}}
         </ol>
