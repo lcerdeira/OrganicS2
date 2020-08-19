@@ -1,9 +1,6 @@
-#Temporary_name-APvP
-
-
 ## Project Overview
 
-This app allows you create a organic food ShopCart
+This app allows you create an organic food Shopping Cart
 
 
 * MYSQL with an ORM(sequelize) on an Expressjs server using Nodejs with the MVC model. 
@@ -12,7 +9,7 @@ This app allows you create a organic food ShopCart
 
 # View Demo  
 
-To view demo click on this link: ([Heroku Demo Link]())
+To view demo click on this link: ([https://p2idea.herokuapp.com/]())
 
 # Getting Started Locally 
 

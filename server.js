@@ -1,55 +1,34 @@
-// *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-const EXPRESS = require("express");
-const BODYPARSER = require("body-parser");
-const PATH = require("path");
-const EXPHBS = require("express-handlebars");
-
-// Sets up the Express App
-// =============================================================
-const APP = EXPRESS();
-const PORT = process.env.PORT || 9000;
-
+const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
 const db = require("./models");
-const burger = require("./models/burgers");
 
-// Sets up the Express app to handle data parsing
+const PORT = process.env.PORT || 8080;
+// Start express server
+const app = express();
+// Serve static content from the public folder
+app.use(express.static("public/assets"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+//Import handlebars
+const exphbs = require("express-handlebars");
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-// parse application/x-www-form-urlencoded
-APP.use(BODYPARSER.urlencoded({ extended: true }));
-// parse application/json
-APP.use(BODYPARSER.json());
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+//Import routes
+const htmlRoutes = require("./controllers/html_routes.js");
+const apiRoutes = require("./controllers/api_routes.js");
 
-// Static directory
-APP.use(EXPRESS.static(PATH.join(__dirname, "public")));
-
-// Routes
-// =============================================================
-require("./routes")(APP);
-// Import routes and give the server access to them.
-
-// catch 404 and forward to error handler
-APP.use((req, res, next) => {
-  const err = new Error("Not Found");
-  err.status = 404;
-  next(err);
-});
-
-// Views
-// ============================================================
-APP.engine("handlebars", EXPHBS({ defaultLayout: "main" }));
-APP.set("view engine", "handlebars");
-
-// Starts the server to begin listening
-// =============================================================
+app.use(htmlRoutes);
+app.use(apiRoutes);
+//Listen on port
 db.sequelize.sync().then(() => {
-  APP.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
@@ -57,5 +36,3 @@ db.sequelize.sync().then(() => {
     );
   });
 });
-// our module get's exported as app.
-module.exports = APP;

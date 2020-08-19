@@ -1,29 +1,47 @@
-<section id="burg_holders">
+<div class="container">
+<br>
+  <h1>Eat-Da-Burger!</h1>
+<br>
+  <div class="img">
+    <img src="/img/burger.png">
+  </div>
   <div class="container">
-      {{> alerts/alerts-block}}
     <div class="row">
-      <div class="col-12 col-md-6  d-flex flex-column">
-        <div class="card mb-3">
-          <div class="card-header">
-            <h5 class="card-header-text text-center">Burger Not Yet Eaten!</h5>
+      <div class="col">
+        <form class="input-form">
+          <div class="form-group">
+            <input class="form-control" type="text" id="burgerName" name="name"
+              placeholder="What burger would you like to eat?">
           </div>
-          <div class="card-block burger-box pl-4">
-            {{#each burger}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6  d-flex  flex-column">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-header-text text-center">Eaten Burgers!</h5>
-          </div>
-          <div class="card-block burger-box pl-4">
-            {{#each burger}} {{#if devoured}} {{> burgers/burger-block devoured=false}} {{/if}} {{/each}}
-            </ul>
-          </div>
-        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   </div>
-</section>
-{{> modals/modal-block}}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Your Burgers:</h2>
+        <ol>
+          {{#each burgers}}
+          {{#unless devoured }}
+          {{> templates/devour-btn devoured=false }}
+          {{/unless}}
+          {{/each}}
+        </ol>
+      </div>
+      <div class="col">
+        <h2>Burgers you have vanquished:</h2>
+        <ol>
+          {{#each burgers}}
+          {{#if devoured}}
+          {{> templates/devour-btn devoured=true}}
+          {{/if}}
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+</div>

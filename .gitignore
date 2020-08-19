@@ -1,4 +1,4 @@
 node_modules/
-.env
-.DS_Store
 rough/
+.env
+homework_instructions.md

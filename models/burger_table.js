@@ -1,15 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-  console.log("got executed");
-  const Burger = sequelize.define("Burger", {
-    // The email cannot be null, and must be a proper email before creation
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
+  const Burger = sequelize.define("burgers", {
+    burger_name: { type: DataTypes.STRING, allowNull: false },
+    devoured: { type: DataTypes.TINYINT, allowNull: false },
+    createdAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+      field: 'created_at',
     },
-    devoured: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+      field: 'updated_at',
     }
   });
 
