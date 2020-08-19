@@ -16,19 +16,7 @@
         <h2>Items:</h2>
         <ol>
           {{#each items}}
-          {{#unless devoured }}
-          {{> devour/itemList devoured=false }}
-          {{/unless}}
-          {{/each}}
-        </ol>
-      </div>
-      <div class="col">
-        <h2>Placeholder:</h2>
-        <ol>
-          {{#each items}}
-          {{#if devoured}}
-          {{> devour/itemList devoured=true}}
-          {{/if}}
+          {{> devour/itemList}}
           {{/each}}
         </ol>
       </div>

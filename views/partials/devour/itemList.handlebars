@@ -1,10 +1,11 @@
 <li>
   {{this.item_name}}
+$ {{this.item_price}}
+{{this.item_unit}}
 
-  {{#unless devoured}}
-    <button type="button" class="btn btn-danger devour" data-id="{{id}}" data-newburger="{{devoured}}">
+
+    <button type="button" class="btn btn-danger devour" data-id="{{id}}">
       Add to Cart
     </button>
-  {{/unless}}
 
 </li>
