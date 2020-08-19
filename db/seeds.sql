@@ -10,9 +10,9 @@ VALUES
     ("The Wee Lad", TRUE);
 
 INSERT INTO Product_categories (category,createdAt,updatedAt) VALUES
-("Organic Fresh Meat",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
-("Organic Fresh Fruit & Vegetables",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
-("Organic Butter & Eggs",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+("meat",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+("greens",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+("dairy",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 
 INSERT INTO products (title,slug,description,price,unit,image,stock,createdAt,updatedAt,ProductCategoryId) VALUES 
 ("Butter","organic-butter","Being certified organic means our butter is produced from milk without the use of pesticides, herbicides, hormones or antibiotics. Our organic milk is not homogenised which means that we have kept the milk in its most natural state.",3.59,"ea","http://place-hold.it/150",59,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,3),

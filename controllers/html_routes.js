@@ -51,12 +51,22 @@ router.get("/burgers", isAuthenticated, (req, res) => {
   });
 });
 
-router.get("/meat", (req, res) => {
+router.get("/grocery/:category", (req, res) => {
+  let department = req.params.category;
+  const departmentIds = {
+    meat: 1,
+    greens: 2,
+    dairy: 3,
+  };
+
+  let departmentId = departmentIds[department];
+
   let itemsArray = [];
   db.Product.findAll({
     where: {
-      ProductCategoryId: 1
-    }
+      ProductCategoryId: departmentId,
+    },
+    include: [db.Product_category],
   }).then((data) => {
     data.forEach((element) => {
       let itemSet = {};
@@ -67,7 +77,6 @@ router.get("/meat", (req, res) => {
     myObj = {
       items: itemsArray,
     };
-    console.log(myObj);
     res.render("items", myObj);
   });
 });
