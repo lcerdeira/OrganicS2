@@ -1,36 +1,26 @@
-<div class="container">
-<br>
-  <h1>Items</h1>
-<br>
-
+<section class="shopping-cart spad">
   <div class="container">
     <div class="row">
-      <div class="col">
-
+      <div class="col-lg-12">
+        <div class="shoping__cart__table">
+          <table id="item-list">
+            <thead>
+              <tr>
+                <th class="shoping__product">Item Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>
+                  Add to Cart
+                </th>
+              </tr>
+            </thead>
+            <tbody id="shopping-cart">
+              {{#each items}} {{> templates/itemList}} {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h2>Items:</h2>
-        <table id="item-list">
-          <tr>
-  <th>Item Name </th>
-  <th> Price </th>
-  <th> Unit </th>
-  <th>
-    Add to Cart
-  </th>
-</tr>
-
-          {{#each items}}
-          {{> templates/itemList}}
-          {{/each}}
-        </table>
-      </div>
-    </div>
-  </div>
-
-
-</div>
+</section>
