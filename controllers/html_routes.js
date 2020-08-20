@@ -72,7 +72,8 @@ router.get("/grocery/:category", (req, res) => {
       let itemSet = {};
       itemSet["id"] = element.dataValues.id;
       itemSet["item_name"] = element.dataValues.title;
-      itemSet["item_price"] = element.dataValues.price;
+      let formatPrice = parseFloat(element.dataValues.price).toFixed(2);
+      itemSet["item_price"] = formatPrice;
       itemSet["item_unit"] = element.dataValues.unit;
       itemSet["item_quantity"] = 1;
       itemsArray.push(itemSet);
