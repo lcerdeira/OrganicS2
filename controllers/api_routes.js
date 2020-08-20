@@ -9,7 +9,6 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
@@ -81,8 +80,7 @@ router.post("/api/burgers", isAuthenticated, (req, res) => {
   );
 });
 
-
-
+// Create api route for add to cart
 
 // Export routes for server.js to use.
 module.exports = router;

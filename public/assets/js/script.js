@@ -1,50 +1,27 @@
-// $(document).ready(function() {
-//   const listEl = $("#depts");
-//   console.log(listEl.text());
+$(document).ready(() => {
+  const listEl = $("#item-list");
 
-//   listEl.on("click", function() {
-//     event.preventDefault();
-// category = event.target.text
+  if (localStorage.getItem("shoppingCart") !== null) {
+    var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
+  } else {
+    var storageArray = [];
+  }
 
-
-//   });
-// });
-
-// var shoppingCartEl = document.querySelector("#shopping-cart");
-// var groceries = ["Bananas", "Apples", "Oranges", "Grapes", "Blueberries"];
-
-// listEl.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   if(event.target.matches("button")) {
-//     var item = document.createElement("div");
-//     item.textContent = groceries[event.target.parentElement.id];
-//     shoppingCartEl.append(item);
-//   }
-// });
-
-// $(() => {
-//   $(".devour").on("click", function(event) {
-//     event.preventDefault();
-//     const id = $(this).data("id");
-//     const addBurger = $(this).data("addBurger");
-//     const burgerStatus = {
-//       devoured: addBurger
-//     };
-//     // Send the PUT request.
-//     $.ajax("/api/burgers/" + id, {
-//       type: "PUT",
-//       data: burgerStatus
-//     }).then(() => {
-//       location.reload();
-//     });
-//   });
-
-//   $(".input-form").on("submit", event => {
-//     event.preventDefault();
-//     const addBurger = {
-//       burger_name: $("#burgerName").val()
-//     };
-
-
-//   });
-// });
+  listEl.on("click", () => {
+    console.log("clicked");
+    event.preventDefault();
+    const target = $(event.target);
+    const shoppingListItem = {
+      itemId: target
+        .parent()
+        .parent()
+        .attr("id"),
+      itemName: $(target.parent().siblings()[0]).text(),
+      itemPrice: $(target.parent().siblings()[1]).text(),
+      itemUnit: $(target.parent().siblings()[2]).text(),
+    };
+    storageArray.push(shoppingListItem);
+    console.log(storageArray);
+    localStorage.setItem("shoppingCart", JSON.stringify(storageArray));
+  });
+});

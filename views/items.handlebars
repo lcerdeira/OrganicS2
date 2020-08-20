@@ -14,11 +14,20 @@
     <div class="row">
       <div class="col">
         <h2>Items:</h2>
-        <ol>
+        <table id="item-list">
+          <tr>
+  <th>Item Name </th>
+  <th> Price </th>
+  <th> Unit </th>
+  <th>
+    Add to Cart
+  </th>
+</tr>
+
           {{#each items}}
           {{> templates/itemList}}
           {{/each}}
-        </ol>
+        </table>
       </div>
     </div>
   </div>

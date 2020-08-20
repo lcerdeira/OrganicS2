@@ -70,10 +70,11 @@ router.get("/grocery/:category", (req, res) => {
   }).then((data) => {
     data.forEach((element) => {
       let itemSet = {};
+      itemSet["id"] = element.dataValues.id;
       itemSet["item_name"] = element.dataValues.title;
       itemSet["item_price"] = element.dataValues.price;
       itemSet["item_unit"] = element.dataValues.unit;
-      
+
       itemsArray.push(itemSet);
     });
     myObj = {

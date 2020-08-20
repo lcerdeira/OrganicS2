@@ -1,11 +1,12 @@
-<li>
-  {{this.item_name}}
-$ {{this.item_price}}
-{{this.item_unit}}
+
+<tr id={{id}}>
+
+  <td>{{this.item_name}} </td>
+  <td>{{this.item_price}} </td>
+  <td>{{this.item_unit}} </td>
+  <td> <button type="button" class="btn btn-danger">
+      Add
+    </button></td>
 
 
-    <button type="button" class="btn btn-danger devour" data-id="{{id}}">
-      Add to Cart
-    </button>
-
-</li>
+</tr>
