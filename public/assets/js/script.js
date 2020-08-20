@@ -12,7 +12,11 @@ $(document).ready(() => {
     event.preventDefault();
     const target = $(event.target);
 
+
     if (target.is("button")) {
+      console.log(target);
+      console.log(target.parent().siblings())
+      
       const shoppingListItem = {
         itemId: target
           .parent()
@@ -20,8 +24,8 @@ $(document).ready(() => {
           .attr("id"),
         itemName: $(target.parent().siblings()[0]).text(),
         itemPrice: $(target.parent().siblings()[1]).text(),
-        itemQty: 3,
         itemUnit: $(target.parent().siblings()[2]).text(),
+        itemQty: target.parent().siblings().find('input').val()
       };
       storageArray.push(shoppingListItem);
       console.log(storageArray);
