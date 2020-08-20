@@ -18,6 +18,7 @@ $(document).ready(() => {
         .attr("id"),
       itemName: $(target.parent().siblings()[0]).text(),
       itemPrice: $(target.parent().siblings()[1]).text(),
+      itemQty: 3,
       itemUnit: $(target.parent().siblings()[2]).text(),
     };
     storageArray.push(shoppingListItem);
