@@ -26,7 +26,9 @@ router.post("/api/login", passport.authenticate("local"), (req, res) => {
 router.post("/api/signup", (req, res) => {
   db.User.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name
   })
     .then(() => {
       res.redirect(307, "/api/login");
@@ -51,6 +53,8 @@ router.get("/api/user_data", (req, res) => {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
+      first_name: req.user.first_name,
+      last_name: req.user.last_name,
       email: req.user.email,
       id: req.user.id
     });
