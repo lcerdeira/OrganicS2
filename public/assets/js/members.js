@@ -3,8 +3,11 @@ $(document).ready(() => {
   // and updates the HTML on the page
 
   $.get("/api/user_data").then(data => {
-    window.location.replace("/burgers");
+    window.location.replace("/checkout");
 
-    $(".member-name").text(data.email);
+    $(".member-name").text(data.first_name);
+
+
+    
   });
 });

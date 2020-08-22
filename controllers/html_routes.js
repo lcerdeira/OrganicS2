@@ -70,10 +70,13 @@ router.get("/grocery/:category", (req, res) => {
   }).then((data) => {
     data.forEach((element) => {
       let itemSet = {};
+      itemSet["id"] = element.dataValues.id;
       itemSet["item_name"] = element.dataValues.title;
-      itemSet["item_price"] = element.dataValues.price;
+      let formatPrice = parseFloat(element.dataValues.price).toFixed(2);
+      itemSet["item_price"] = formatPrice;
       itemSet["item_unit"] = element.dataValues.unit;
-      
+      itemSet["item_quantity"] = 1;
+      itemSet["item_category"]=element.dataValues.Product_category.category;
       itemsArray.push(itemSet);
     });
     myObj = {
@@ -83,4 +86,14 @@ router.get("/grocery/:category", (req, res) => {
   });
 });
 
+router.get("/checkoutAuth", (req, res) => {
+  if (req.user) {
+    res.redirect("/checkout");
+  }
+  res.sendFile(path.join(__dirname, "../public/assets/login.html"));
+});
+router.get("/checkout", isAuthenticated, (req, res) => {
+  console.log("go for burger")
+    res.render("checkout", {});
+});
 module.exports = router;
