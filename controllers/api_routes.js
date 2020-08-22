@@ -63,7 +63,7 @@ router.get("/api/user_data", (req, res) => {
 
 
 // Change burger state to devoured
-router.put("/api/burgers/:id", isAuthenticated, (req, res) => {
+router.put("/api/food/:id", isAuthenticated, (req, res) => {
   const condition = "id = " + req.params.id;
   burger.update(condition, result => {
     if (result.changedRows === 0) {
@@ -74,7 +74,7 @@ router.put("/api/burgers/:id", isAuthenticated, (req, res) => {
 });
 
 // Add new burger
-router.post("/api/burgers", isAuthenticated, (req, res) => {
+router.post("/api/food", isAuthenticated, (req, res) => {
   burger.create(
     ["burger_name", "devoured"],
     [req.body.burger_name, req.body.devoured],

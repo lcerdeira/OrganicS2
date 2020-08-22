@@ -1,6 +1,6 @@
 
 USE farmers_market;
-INSERT INTO burgers
+INSERT INTO food
     (burger_name, devoured)
 VALUES
     ("The Roadhouse", FALSE),
