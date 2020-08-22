@@ -1,17 +1,17 @@
 <div class="container">
 <br>
-  <h1>Eat-Da-Burger!</h1>
+  <h1>eat-healthy-food!</h1>
 <br>
   <div class="img">
-    <img src="/img/burger.png">
+    <img src="/img/vegan.png">
   </div>
   <div class="container">
     <div class="row">
       <div class="col">
         <form class="input-form">
           <div class="form-group">
-            <input class="form-control" type="text" id="burgerName" name="name"
-              placeholder="What burger would you like to eat?">
+            <input class="form-control" type="text" id="foodName" name="name"
+              placeholder="What organic food would you like to eat?">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -21,9 +21,9 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h2>Your Burgers:</h2>
+        <h2>Your food:</h2>
         <ol>
-          {{#each burgers}}
+          {{#each food}}
           {{#unless devoured }}
           {{> templates/devour-btn devoured=false }}
           {{/unless}}
@@ -31,9 +31,9 @@
         </ol>
       </div>
       <div class="col">
-        <h2>Burgers you have vanquished:</h2>
+        <h2>Food you have vanquished:</h2>
         <ol>
-          {{#each burgers}}
+          {{#each food}}
           {{#if devoured}}
           {{> templates/devour-btn devoured=true}}
           {{/if}}

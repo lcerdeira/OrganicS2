@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const burger = require("../models/burger");
+const food = require("../models/food");
 const db = require("../models");
 const passport = require("../config/passport");
 // Requiring path to so we can use relative routes to our HTML files
@@ -41,13 +41,13 @@ router.get("/members", isAuthenticated, (req, res) => {
 });
 
 // Main page
-router.get("/burgers", isAuthenticated, (req, res) => {
-  burger.all((data) => {
-    const burgerObj = {
-      burgers: data,
+router.get("/food", isAuthenticated, (req, res) => {
+  food.all((data) => {
+    const foodObj = {
+      food: data,
     };
-    console.log(burgerObj);
-    res.render("index", burgerObj);
+    console.log(foodObj);
+    res.render("index", foodObj);
   });
 });
 

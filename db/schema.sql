@@ -5,9 +5,9 @@ CREATE DATABASE farmers_market;
 
 USE farmers_market;
 
-CREATE TABLE burgers (
+CREATE TABLE food (
   id INT NOT NULL AUTO_INCREMENT,
-  burger_name VARCHAR(30) NULL,
+  food_name VARCHAR(30) NULL,
   devoured boolean not null,
   createdAt TIMESTAMP NOT NULL DEFAULT current_timestamp,
   PRIMARY KEY (id)

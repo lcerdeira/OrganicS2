@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const Burger = sequelize.define("burgers", {
-    burger_name: { type: DataTypes.STRING, allowNull: false },
+  const Food = sequelize.define("food", {
+    food_name: { type: DataTypes.STRING, allowNull: false },
     devoured: { type: DataTypes.TINYINT, allowNull: false },
     createdAt: {
       type: DataTypes.DATE(3),
@@ -14,5 +14,5 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  return Burger;
+  return Food;
 };
