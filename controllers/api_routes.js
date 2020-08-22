@@ -9,7 +9,6 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
@@ -27,7 +26,9 @@ router.post("/api/login", passport.authenticate("local"), (req, res) => {
 router.post("/api/signup", (req, res) => {
   db.User.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name
   })
     .then(() => {
       res.redirect(307, "/api/login");
@@ -52,6 +53,8 @@ router.get("/api/user_data", (req, res) => {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
+      first_name: req.user.first_name,
+      last_name: req.user.last_name,
       email: req.user.email,
       id: req.user.id
     });
@@ -81,8 +84,7 @@ router.post("/api/burgers", isAuthenticated, (req, res) => {
   );
 });
 
-
-
+// Create api route for add to cart
 
 // Export routes for server.js to use.
 module.exports = router;
