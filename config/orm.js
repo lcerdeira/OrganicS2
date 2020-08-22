@@ -48,5 +48,5 @@ const orm = {
   },
 };
 
-// Export the orm object for the model (burger.js).
+// Export the orm object for the model (food.js).
 module.exports = orm;
