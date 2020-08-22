@@ -3,7 +3,7 @@ $(document).ready(() => {
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
 
-  const arrSum = (arr) => arr.reduce((a, b) => a + b, 0);
+  const arrSum = arr => arr.reduce((a, b) => a + b, 0);
 
   if (localStorage.getItem("shoppingCart") !== null) {
     var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -27,7 +27,7 @@ $(document).ready(() => {
     const currentQty = $(
       "<td class='shoping__cart__quantity'>" + storageArray[i].itemQty + "</td>"
     );
-    let itemTotal = storageArray[i].itemQty * storageArray[i].itemPrice;
+    const itemTotal = storageArray[i].itemQty * storageArray[i].itemPrice;
     formatItemTotal = itemTotal.toFixed(2);
     const currentItemTotal = $(
       "<td class='shoping__cart__total'> $" + formatItemTotal + "</td>"
@@ -47,18 +47,18 @@ $(document).ready(() => {
   }
 
   calculateTotals = () => {
-    let totalsArray = [];
-    let meatArray = [];
-    let greensArray = [];
-    let dairyArray = [];
+    const totalsArray = [];
+    const meatArray = [];
+    const greensArray = [];
+    const dairyArray = [];
 
     if (localStorage.getItem("shoppingCart") !== null) {
       var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
     } else {
       var storageArray = [];
     }
-    storageArray.forEach((element) => {
-      let elementTotal = element.itemPrice * element.itemQty;
+    storageArray.forEach(element => {
+      const elementTotal = element.itemPrice * element.itemQty;
       if (element.itemCategory === "meat") {
         meatArray.push(elementTotal);
       } else if (element.itemCategory === "greens") {
@@ -70,7 +70,7 @@ $(document).ready(() => {
       totalsArray.push(elementTotal);
     });
 
-    let totals={
+    const totals = {
       cartTotal: arrSum(totalsArray).toFixed(2),
       meatTotal: arrSum(meatArray).toFixed(2),
       greensTotal: arrSum(greensArray).toFixed(2),
@@ -79,9 +79,8 @@ $(document).ready(() => {
 
     return totals;
   };
-  
-  cartTotals=calculateTotals()
 
+  cartTotals = calculateTotals();
 
   updateTotals = () => {
     totalObj.text("$ " + cartTotals.cartTotal);

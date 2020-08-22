@@ -1,2 +1,9 @@
 models/index.js
 node_modules/
+public/assets/js/bootstrap.min.js
+public/assets/js/jquery.nice-select.min.js
+public/assets/js/jquery.slicknav.js
+public/assets/js/jquery-3.3.1.min.js
+public/assets/js/jquery-ui.min.js
+public/assets/js/mixitup.min.js
+public/assets/js/owl.carousel.min.js

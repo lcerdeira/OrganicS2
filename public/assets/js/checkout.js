@@ -9,8 +9,8 @@ $(document).ready(() => {
   const dairyObj = $("#dairy-total");
 
   $.get("/api/user_data").then(data => {
-    $("#first-name").val(data.first_name);
-    $("#last-name").val(data.last_name);
+    $("#first-name").val(data.firstName);
+    $("#last-name").val(data.lastName);
   });
 
   calculateTotals = () => {
@@ -98,12 +98,12 @@ $(document).ready(() => {
     );
     console.log(address, amount);
 
-    // function placeOrder(email, password, first_name, last_name) {
+    // function placeOrder(email, password, firstName, lastName) {
     //   $.post("/api/placeOrder", {
     //     email: email,
     //     password: password,
-    //     first_name: first_name,
-    //     last_name: last_name
+    //     firstName: firstName,
+    //     lastName: lastName
     //   })
     //     .then(() => {
     //       window.location.replace("/checkout");

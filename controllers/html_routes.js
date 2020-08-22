@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const food = require("../models/food");
 const db = require("../models");
-const passport = require("../config/passport");
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
 
@@ -42,9 +41,9 @@ router.get("/members", isAuthenticated, (req, res) => {
 
 // Main page
 router.get("/food", isAuthenticated, (req, res) => {
-  food.all((data) => {
+  food.all(data => {
     const foodObj = {
-      food: data,
+      food: data
     };
     console.log(foodObj);
     res.render("index", foodObj);
@@ -52,35 +51,35 @@ router.get("/food", isAuthenticated, (req, res) => {
 });
 
 router.get("/grocery/:category", (req, res) => {
-  let department = req.params.category;
+  const department = req.params.category;
   const departmentIds = {
     meat: 1,
     greens: 2,
-    dairy: 3,
+    dairy: 3
   };
 
-  let departmentId = departmentIds[department];
+  const departmentId = departmentIds[department];
 
-  let itemsArray = [];
+  const itemsArray = [];
   db.Product.findAll({
     where: {
-      ProductCategoryId: departmentId,
+      ProductCategoryId: departmentId
     },
-    include: [db.Product_category],
-  }).then((data) => {
-    data.forEach((element) => {
-      let itemSet = {};
-      itemSet["id"] = element.dataValues.id;
-      itemSet["item_name"] = element.dataValues.title;
-      let formatPrice = parseFloat(element.dataValues.price).toFixed(2);
-      itemSet["item_price"] = formatPrice;
-      itemSet["item_unit"] = element.dataValues.unit;
-      itemSet["item_quantity"] = 1;
-      itemSet["item_category"]=element.dataValues.Product_category.category;
+    include: [db.Product_category]
+  }).then(data => {
+    data.forEach(element => {
+      const itemSet = {};
+      itemSet.id = element.dataValues.id;
+      itemSet.itemName = element.dataValues.title;
+      const formatPrice = parseFloat(element.dataValues.price).toFixed(2);
+      itemSet.itemPrice = formatPrice;
+      itemSet.itemUnit = element.dataValues.unit;
+      itemSet.itemQuantity = 1;
+      itemSet.itemCategory = element.dataValues.Product_category.category;
       itemsArray.push(itemSet);
     });
     myObj = {
-      items: itemsArray,
+      items: itemsArray
     };
     res.render("items", myObj);
   });
@@ -93,7 +92,7 @@ router.get("/checkoutAuth", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/assets/login.html"));
 });
 router.get("/checkout", isAuthenticated, (req, res) => {
-  console.log("go for burger")
-    res.render("checkout", {});
+  console.log("go for burger");
+  res.render("checkout", {});
 });
 module.exports = router;

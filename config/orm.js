@@ -1,6 +1,6 @@
 const connection = require("../config/connection.js");
 
-const insertQMarks = (count) => {
+const insertQMarks = count => {
   const arr = [];
   for (let i = 0; i < count; i++) {
     arr.push("?");
@@ -21,7 +21,7 @@ const orm = {
   },
   create: (table, columns, values, cb) => {
     values[1] = false;
-    let queryString =
+    const queryString =
       "INSERT INTO " +
       table +
       " (" +
@@ -29,7 +29,7 @@ const orm = {
       ") VALUES (" +
       insertQMarks(values.length) +
       ") ";
-    connection.query(queryString, values, function (err, result) {
+    connection.query(queryString, values, (err, result) => {
       if (err) {
         throw err;
       }
@@ -37,15 +37,15 @@ const orm = {
     });
   },
   update: (table, condition, cb) => {
-    let queryString =
+    const queryString =
       "UPDATE " + table + " SET devoured = true WHERE " + condition;
-    connection.query(queryString, function (err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
       cb(result);
     });
-  },
+  }
 };
 
 // Export the orm object for the model (food.js).

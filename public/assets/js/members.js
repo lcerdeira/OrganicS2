@@ -5,9 +5,6 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     window.location.replace("/checkout");
 
-    $(".member-name").text(data.first_name);
-
-
-    
+    $(".member-name").text(data.firstName);
   });
 });
