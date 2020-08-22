@@ -2,13 +2,11 @@ $(document).ready(() => {
   const chTable = $("#shopping-cart");
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
-
+  let storageArray = [];
   const arrSum = arr => arr.reduce((a, b) => a + b, 0);
 
   if (localStorage.getItem("shoppingCart") !== null) {
-    var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
-  } else {
-    var storageArray = [];
+    storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
 
   for (let i = 0; i < storageArray.length; i++) {
@@ -51,12 +49,12 @@ $(document).ready(() => {
     const meatArray = [];
     const greensArray = [];
     const dairyArray = [];
+    let storageArray = [];
 
     if (localStorage.getItem("shoppingCart") !== null) {
-      var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
-    } else {
-      var storageArray = [];
+      storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
     }
+
     storageArray.forEach(element => {
       const elementTotal = element.itemPrice * element.itemQty;
       if (element.itemCategory === "meat") {

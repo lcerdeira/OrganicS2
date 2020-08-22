@@ -1,12 +1,10 @@
 $(document).ready(() => {
   const listEl = $("#item-list");
-
+  let storageArray = [];
   if (localStorage.getItem("shoppingCart") !== null) {
-    var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
-  } else {
-    var storageArray = [];
+    storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
-  console.log(storageArray);
+
   listEl.on("click", () => {
     console.log("clicked");
     event.preventDefault();

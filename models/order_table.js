@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Order.associate = function(models) {
-    Order.belongsToMany(models.Product, { through: models.Order_product });
+    Order.belongsToMany(models.Product, { through: models.orderProduct });
   };
 
   return Order;

@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-  const Product_category = sequelize.define("Product_category", {
+  const ProductCategory = sequelize.define("ProductCategory", {
     category: { type: DataTypes.STRING, allowNull: false }
   });
-  Product_category.associate = function(models) {
+  ProductCategory.associate = function(models) {
     // Category has many products
-    Product_category.hasMany(models.Product, {
+    ProductCategory.hasMany(models.Product, {
       onDelete: "cascade"
     });
   };
-  return Product_category;
+  return ProductCategory;
 };

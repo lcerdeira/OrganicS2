@@ -65,7 +65,7 @@ router.get("/grocery/:category", (req, res) => {
     where: {
       ProductCategoryId: departmentId
     },
-    include: [db.Product_category]
+    include: [db.ProductCategory]
   }).then(data => {
     data.forEach(element => {
       const itemSet = {};
@@ -75,7 +75,7 @@ router.get("/grocery/:category", (req, res) => {
       itemSet.itemPrice = formatPrice;
       itemSet.itemUnit = element.dataValues.unit;
       itemSet.itemQuantity = 1;
-      itemSet.itemCategory = element.dataValues.Product_category.category;
+      itemSet.itemCategory = element.dataValues.ProductCategory.category;
       itemsArray.push(itemSet);
     });
     myObj = {
