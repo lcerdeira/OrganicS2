@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const burger = require("../models/burger");
+const burger = require("../models/food");
 const db = require("../models");
 const passport = require("../config/passport");
 // Requiring path to so we can use relative routes to our HTML files
