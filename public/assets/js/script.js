@@ -1,17 +1,14 @@
 $(document).ready(() => {
   const listEl = $("#item-list");
-
+  let storageArray = [];
   if (localStorage.getItem("shoppingCart") !== null) {
-    var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
-  } else {
-    var storageArray = [];
+    storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
-console.log(storageArray)
+
   listEl.on("click", () => {
     console.log("clicked");
     event.preventDefault();
     const target = $(event.target);
-
 
     if (target.is("button")) {
       const shoppingListItem = {
@@ -22,11 +19,15 @@ console.log(storageArray)
         itemName: $(target.parent().siblings()[0]).text(),
         itemPrice: $(target.parent().siblings()[1]).text(),
         itemUnit: $(target.parent().siblings()[2]).text(),
-        itemQty: target.parent().siblings().find('input').val(),
+        itemQty: target
+          .parent()
+          .siblings()
+          .find("input")
+          .val(),
         itemCategory: target
-        .parent()
-        .parent()
-        .attr("data-category"),
+          .parent()
+          .parent()
+          .attr("data-category")
       };
       storageArray.push(shoppingListItem);
       console.log(storageArray);
