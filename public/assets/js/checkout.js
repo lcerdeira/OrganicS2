@@ -1,32 +1,31 @@
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  const arrSum = (arr) => arr.reduce((a, b) => a + b, 0);
+  const arrSum = arr => arr.reduce((a, b) => a + b, 0);
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
   const greensObj = $("#greens-total");
   const meatObj = $("#meat-total");
   const dairyObj = $("#dairy-total");
-  const orderButton = $("#place-order");
 
-  $.get("/api/user_data").then((data) => {
+  $.get("/api/user_data").then(data => {
     $("#first-name").val(data.first_name);
     $("#last-name").val(data.last_name);
   });
 
   calculateTotals = () => {
-    let totalsArray = [];
-    let meatArray = [];
-    let greensArray = [];
-    let dairyArray = [];
+    const totalsArray = [];
+    const meatArray = [];
+    const greensArray = [];
+    const dairyArray = [];
+    let storageArray = [];
 
     if (localStorage.getItem("shoppingCart") !== null) {
-      var storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
-    } else {
-      var storageArray = [];
+      storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
     }
-    storageArray.forEach((element) => {
-      let elementTotal = element.itemPrice * element.itemQty;
+
+    storageArray.forEach(element => {
+      const elementTotal = element.itemPrice * element.itemQty;
       if (element.itemCategory === "meat") {
         meatArray.push(elementTotal);
       } else if (element.itemCategory === "greens") {
@@ -38,11 +37,11 @@ $(document).ready(() => {
       totalsArray.push(elementTotal);
     });
 
-    let totals = {
+    const totals = {
       cartTotal: arrSum(totalsArray).toFixed(2),
       meatTotal: arrSum(meatArray).toFixed(2),
       greensTotal: arrSum(greensArray).toFixed(2),
-      dairyTotal: arrSum(dairyArray).toFixed(2),
+      dairyTotal: arrSum(dairyArray).toFixed(2)
     };
 
     return totals;
@@ -68,19 +67,18 @@ $(document).ready(() => {
   //   });
   // });
 
-  $("#checkout-form").submit((event) => {
+  $("#checkout-form").submit(event => {
     event.preventDefault();
-    let address1 = $("#address1").val();
+    const address1 = $("#address1").val();
+    const address2 = $("#address2").val();
+    const townCity = $("#town-city").val();
+    const state = $("#state").val();
+    const postcode = $("#postcode").val();
+    const country = $("#country").val();
+    // const phone = $("#phone").val();
+    // const email = $("#email").val();
 
-    let address2 = $("#address2").val();
-    let townCity = $("#town-city").val();
-    let state = $("#state").val();
-    let postcode = $("#postcode").val();
-    let country = $("#country").val();
-    let phone = $("#phone").val();
-    let email = $("#email").val();
-
-    let address =
+    const address =
       address2 +
       " " +
       address1 +
@@ -93,11 +91,12 @@ $(document).ready(() => {
       ", " +
       country;
 
-    let amount = parseInt(
+    const amount = parseInt(
       $("#total")
         .html()
         .replace("$ ", "")
     );
+    console.log(address, amount);
 
     // function placeOrder(email, password, first_name, last_name) {
     //   $.post("/api/placeOrder", {
