@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
-  const Order_product = sequelize.define("Order_product", {
+  const orderProduct = sequelize.define("orderProduct", {
     qty: { type: DataTypes.INTEGER, allowNull: false }
   });
 
-  return Order_product;
+  return orderProduct;
 };

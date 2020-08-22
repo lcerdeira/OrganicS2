@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const burger = require("../models/burger");
+const burger = require("../models/food");
 const db = require("../models");
 const passport = require("../config/passport");
 // Requiring path to so we can use relative routes to our HTML files
-const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -27,8 +26,8 @@ router.post("/api/signup", (req, res) => {
   db.User.create({
     email: req.body.email,
     password: req.body.password,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
   })
     .then(() => {
       res.redirect(307, "/api/login");
@@ -53,14 +52,13 @@ router.get("/api/user_data", (req, res) => {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
-      first_name: req.user.first_name,
-      last_name: req.user.last_name,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
       id: req.user.id
     });
   }
 });
-
 
 // Change burger state to devoured
 router.put("/api/food/:id", isAuthenticated, (req, res) => {
@@ -76,8 +74,8 @@ router.put("/api/food/:id", isAuthenticated, (req, res) => {
 // Add new burger
 router.post("/api/food", isAuthenticated, (req, res) => {
   burger.create(
-    ["burger_name", "devoured"],
-    [req.body.burger_name, req.body.devoured],
+    ["burgerName", "devoured"],
+    [req.body.burgerName, req.body.devoured],
     result => {
       res.json({ id: result.insertId });
     }
