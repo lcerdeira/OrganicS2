@@ -8,11 +8,6 @@ $(document).ready(() => {
   const meatObj = $("#meat-total");
   const dairyObj = $("#dairy-total");
 
-  $.get("/api/user_data").then(data => {
-    $("#first-name").val(data.firstName);
-    $("#last-name").val(data.lastName);
-  });
-
   calculateTotals = () => {
     const totalsArray = [];
     const meatArray = [];
@@ -59,14 +54,6 @@ $(document).ready(() => {
 
   updateTotals();
 
-  //   orderButton.on("click", (event) => {
-  //     console.log("clicked");
-  //     event.preventDefault();
-  //     const target = $(event.target);
-  //     console.log(target);
-  //   });
-  // });
-
   $("#checkout-form").submit(event => {
     event.preventDefault();
     const address1 = $("#address1").val();
@@ -96,24 +83,20 @@ $(document).ready(() => {
         .html()
         .replace("$ ", "")
     );
-    console.log(address, amount);
+    const userId = $("#place-order").attr("data-userId");
 
-    // function placeOrder(email, password, firstName, lastName) {
-    //   $.post("/api/placeOrder", {
-    //     email: email,
-    //     password: password,
-    //     firstName: firstName,
-    //     lastName: lastName
-    //   })
-    //     .then(() => {
-    //       window.location.replace("/checkout");
-    //       // If there's an error, handle it by throwing up a bootstrap alert
-    //     })
-    //     .catch(handleLoginErr);
-    // }
+    console.log(address, amount, userId);
 
-    // console.log(address);
-    // console.log(phone);
-    // console.log(email);
+    $.post("/api/placeOrder", {
+      total: amount,
+      addressId: address,
+      userId: userId
+    })
+      .then(() => {
+        console.log("Order complete");
+        // localStorage.clear();
+        window.location.replace("/complete");
+      })
+      .catch(err => console.log(err));
   });
 });

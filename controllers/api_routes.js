@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const burger = require("../models/food");
 const db = require("../models");
 const passport = require("../config/passport");
+const { v4: uuidv4 } = require("uuid");
 // Requiring path to so we can use relative routes to our HTML files
 
 // Requiring our custom middleware for checking if a user is logged in
@@ -37,6 +37,22 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
+router.post("/api/placeOrder", isAuthenticated, (req, res) => {
+  console.log(req.body.userId);
+  db.Order.create({
+    total: req.body.total,
+    addressId: req.body.addressId,
+    userId: req.body.userId,
+    hash: uuidv4()
+  })
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+});
+
 // Route for logging user out
 router.get("/logout", (req, res) => {
   req.logout();
@@ -58,28 +74,6 @@ router.get("/api/user_data", (req, res) => {
       id: req.user.id
     });
   }
-});
-
-// Change burger state to devoured
-router.put("/api/food/:id", isAuthenticated, (req, res) => {
-  const condition = "id = " + req.params.id;
-  burger.update(condition, result => {
-    if (result.changedRows === 0) {
-      return res.status(404).end();
-    }
-    res.status(200).end();
-  });
-});
-
-// Add new burger
-router.post("/api/food", isAuthenticated, (req, res) => {
-  burger.create(
-    ["burgerName", "devoured"],
-    [req.body.burgerName, req.body.devoured],
-    result => {
-      res.json({ id: result.insertId });
-    }
-  );
 });
 
 // Create api route for add to cart

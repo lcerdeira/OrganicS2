@@ -29,13 +29,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>First Name<span>*</span></p>
-                                        <input id="first-name" type="text" disabled>
+                                        <input type="text" placeholder="{{this.firstName}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input id="last-name" type="text" disabled>
+                                        <input type="text" placeholder="{{this.lastName}}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input id="email" type="text">
+                                        <input id="email" type="text" value="{{this.email}}">
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn" id="place-order">PLACE ORDER</button>
+                                <button type="submit" class="site-btn" id="place-order" data-userId="{{this.id}}">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
