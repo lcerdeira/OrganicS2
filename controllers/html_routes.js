@@ -8,10 +8,11 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", (req, res) => {
+  // If the user already has an account send them to the members page
   if (req.user) {
     res.redirect("/members");
   }
-  res.render("index", {});
+  res.sendFile(path.join(__dirname, "../public/assets/index.html"));
 });
 
 router.get("/login", (req, res) => {
@@ -33,7 +34,7 @@ router.get("/signup", (req, res) => {
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/members", isAuthenticated, (req, res) => {
-  res.render("index", {});
+  res.sendFile(path.join(__dirname, "../public/assets/members.html"));
 });
 
 router.get("/grocery/:category", (req, res) => {
@@ -99,18 +100,6 @@ router.get("/checkout", isAuthenticated, (req, res) => {
 
 router.get("/complete", (req, res) => {
   res.render("complete", {});
-});
-
-router.get("/contact", (req, res) => {
-  res.render("contact", {});
-});
-
-router.get("/contact", (req, res) => {
-  res.render("contact", {});
-});
-
-router.get("/shopping-cart", (req, res) => {
-  res.render("shopping-cart", {});
 });
 
 module.exports = router;
