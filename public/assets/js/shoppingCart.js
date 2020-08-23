@@ -22,7 +22,9 @@ $(document).ready(() => {
       "<td class='shopping__cart__price'> $" + formatPrice + "</td>"
     );
     const currentQty = $(
-      "<td class='shopping__cart__quantity'>" + storageArray[i].itemQty + "</td>"
+      "<td class='shopping__cart__quantity'>" +
+        storageArray[i].itemQty +
+        "</td>"
     );
     const itemTotal = storageArray[i].itemQty * storageArray[i].itemPrice;
     formatItemTotal = itemTotal.toFixed(2);
