@@ -44,6 +44,8 @@ $(document).ready(() => {
 
     const balanceCredit = currentCredit - amount;
 
+    console.log(currentCredit);
+
     // const phone = $("#phone").val();
     // const email = $("#email").val();
 
@@ -63,10 +65,10 @@ $(document).ready(() => {
     $.post("/api/placeOrder", {
       total: amount,
       addressId: address,
-      userId: userId,
-      paid: 1
+      userId: userId
     })
       .then(() => {
+        console.log("Order complete");
         $.post("/api/updateCredit", {
           userId: userId,
           credit: balanceCredit
