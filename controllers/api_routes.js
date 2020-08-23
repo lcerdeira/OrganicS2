@@ -62,6 +62,7 @@ router.post("/api/placeOrder", isAuthenticated, (req, res) => {
     total: req.body.total,
     addressId: req.body.addressId,
     userId: req.body.userId,
+    paid: req.body.paid,
     hash: uuidv4()
   })
     .then(() => {
