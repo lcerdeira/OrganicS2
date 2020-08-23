@@ -88,13 +88,17 @@
                                 <div class="checkout__order__subtotal">Subtotal <span id="subTotal"></span></div>
                                 <div class="checkout__order__total">Total <span id="total"></span></div>
                                 <p>Thank you for shopping with the ORGANIC Farmers Market.</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
+                                <ul>
+                                    <li>Your balance credit: <span id="current-credits">{{credits}}</span></li>
+<li class="insufficient">Insufficient credits! Please add credits below.</li>
+                                </ul>
+<div>
+<h5>Add Credit</h5>
+                                        <input id="creditAmount" type="number">
+                                    <button type="button" id="addCredit">Add Credit</button>
+
+</div>
+
                                 <button type="submit" class="site-btn" id="place-order" data-userId="{{this.id}}">PLACE ORDER</button>
                             </div>
                         </div>

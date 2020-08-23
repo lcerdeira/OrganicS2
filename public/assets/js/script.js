@@ -1,5 +1,6 @@
 $(document).ready(() => {
   const listEl = $("#item-list");
+
   let storageArray = [];
   if (localStorage.getItem("shoppingCart") !== null) {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));

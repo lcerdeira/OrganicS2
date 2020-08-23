@@ -37,12 +37,32 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
+router.post("/api/updateCredit", isAuthenticated, (req, res) => {
+  console.log(typeof req.body.credit, req.body.userId);
+  credits = parseInt(req.body.credit);
+  db.User.update(
+    { credits: credits },
+    {
+      where: {
+        id: req.body.userId
+      }
+    }
+  )
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+});
+
 router.post("/api/placeOrder", isAuthenticated, (req, res) => {
   console.log(req.body.userId);
   db.Order.create({
     total: req.body.total,
     addressId: req.body.addressId,
     userId: req.body.userId,
+    paid: req.body.paid,
     hash: uuidv4()
   })
     .then(() => {
