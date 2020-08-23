@@ -6,7 +6,7 @@
     padding-bottom: 80px;
 }
 
-.shoping__cart__table {
+.shopping__cart__table {
     margin-bottom: 30px;
 
     table {
@@ -25,7 +25,7 @@
                 color: $normal-color;
                 padding-bottom: 20px;
 
-                &.shoping__product {
+                &.shopping__product {
                     text-align: left;
                 }
             }
@@ -40,7 +40,7 @@
                     padding-bottom: 30px;
                     border-bottom: 1px solid $border;
 
-                    &.shoping__cart__item {
+                    &.shopping__cart__item {
                         width: 630px;
                         text-align: left;
 
@@ -55,21 +55,21 @@
                         }
                     }
 
-                    &.shoping__cart__price {
+                    &.shopping__cart__price {
                         font-size: 18px;
                         color: $normal-color;
                         font-weight: 700;
                         width: 100px;
                     }
 
-                    &.shoping__cart__total {
+                    &.shopping__cart__total {
                         font-size: 18px;
                         color: $normal-color;
                         font-weight: 700;
                         width: 110px;
                     }
 
-                    &.shoping__cart__item__close {
+                    &.shopping__cart__item__close {
                         text-align: right;
 
                         span {
@@ -79,7 +79,7 @@
                         }
                     }
 
-                    &.shoping__cart__quantity {
+                    &.shopping__cart__quantity {
                         width: 225px;
 
                         .pro-qty {
@@ -119,9 +119,9 @@
     }
 }
 
-.shoping__continue {}
+.shopping__continue {}
 
-.shoping__discount {
+.shopping__discount {
     margin-top: 45px;
 
     h5 {
@@ -157,7 +157,7 @@
     }
 }
 
-.shoping__checkout {
+.shopping__checkout {
     background: $background;
     padding: 30px;
     padding-top: 20px;

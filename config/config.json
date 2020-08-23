@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "null",
     "database": "farmers_market",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -15,6 +15,10 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
+    "username": "a6s1cl8i8j7neh5h",
+    "password": "c1lcbmlw9vrko8p5",
+    "database": "iryf0youokge8er0",
+    "host": "wftuqljwesiffol6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
