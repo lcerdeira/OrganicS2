@@ -52,7 +52,7 @@
       </div>
       <div class="humberger__menu__widget">
         <div class="header__top__right__auth">
-          <a href={{#if authStatus}}
+          <a href=            {{#if authStatus}}
             "/logout"
             {{else}}
             "/login"
@@ -100,16 +100,7 @@
             <div class="col-lg-6 col-md-6">
               <div class="header__top__right">
                 <div class="header__top__right__auth">
-            <a href={{#if authStatus}}
-            "/logout"
-            {{else}}
-            "/login"
-            {{/if}}><i class="fa fa-user"></i>
-            {{#if authStatus}}
-            Logout
-            {{else}}
-            Login
-            {{/if}}</a>
+                  <a href="/login"><i class="fa fa-user"></i> Login</a>
                 </div>
               </div>
             </div>

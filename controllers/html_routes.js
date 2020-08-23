@@ -93,6 +93,7 @@ router.get("/checkout", isAuthenticated, (req, res) => {
     userData.firstName = data.firstName;
     userData.lastName = data.lastName;
     userData.credits = data.credits;
+    userData.authStatus = true;
     console.log(userData);
     res.render("checkout", userData);
   });
