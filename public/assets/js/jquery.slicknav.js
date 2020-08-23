@@ -56,7 +56,7 @@
         }
 
         this._defaults = defaults;
-        this._name = mobileMenu;
+        this.Name = mobileMenu;
 
         this.init();
     }

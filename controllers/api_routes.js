@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const burger = require("../models/burger");
+const burger = require("../models/food");
 const db = require("../models");
 const passport = require("../config/passport");
 // Requiring path to so we can use relative routes to our HTML files
-const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
 
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
@@ -27,7 +25,9 @@ router.post("/api/login", passport.authenticate("local"), (req, res) => {
 router.post("/api/signup", (req, res) => {
   db.User.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
   })
     .then(() => {
       res.redirect(307, "/api/login");
@@ -52,15 +52,16 @@ router.get("/api/user_data", (req, res) => {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
       id: req.user.id
     });
   }
 });
 
-
 // Change burger state to devoured
-router.put("/api/burgers/:id", isAuthenticated, (req, res) => {
+router.put("/api/food/:id", isAuthenticated, (req, res) => {
   const condition = "id = " + req.params.id;
   burger.update(condition, result => {
     if (result.changedRows === 0) {
@@ -71,18 +72,17 @@ router.put("/api/burgers/:id", isAuthenticated, (req, res) => {
 });
 
 // Add new burger
-router.post("/api/burgers", isAuthenticated, (req, res) => {
+router.post("/api/food", isAuthenticated, (req, res) => {
   burger.create(
-    ["burger_name", "devoured"],
-    [req.body.burger_name, req.body.devoured],
+    ["burgerName", "devoured"],
+    [req.body.burgerName, req.body.devoured],
     result => {
       res.json({ id: result.insertId });
     }
   );
 });
 
-
-
+// Create api route for add to cart
 
 // Export routes for server.js to use.
 module.exports = router;

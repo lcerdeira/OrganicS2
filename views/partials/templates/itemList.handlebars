@@ -1,11 +1,19 @@
-<li>
-  {{this.item_name}}
-$ {{this.item_price}}
-{{this.item_unit}}
+<tr id="{{id}}" data-category="{{itemCategory}}">
+  <td class="shoping__cart__item">{{this.itemName}}</td>
+  <td class="shoping__cart__price">{{this.itemPrice}}</td>
+  <td>{{this.item_unit}}</td>
 
+  <td class="shoping__cart__quantity">
+    <div class="quantity">
+      <div class="pro-qty">
+        <input type="text" value="{{this.itemQuantity}}" />
+      </div>
+    </div>
+  </td>
 
-    <button type="button" class="btn btn-danger devour" data-id="{{id}}">
-      Add to Cart
+  <td>
+    <button type="button" class="btn btn-danger">
+      Add
     </button>
-
-</li>
+  </td>
+</tr>

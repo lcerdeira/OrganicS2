@@ -1,12 +1,12 @@
 {
-  "name": "eat-da-burger",
+  "name": "eat-healthy-food",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
     "start": "node server.js",
-    "lint": "eslint --quiet .",
+    "lint": "eslint .",
     "fix": "eslint --fix .",
     "watch": "nodemon server.js"
   },
@@ -22,12 +22,11 @@
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.8.6"
+    "sequelize": "^5.8.6",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
     "cross-env": "^5.2.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",

@@ -9,7 +9,7 @@ This app allows you create an organic food Shopping Cart
 
 # View Demo  
 
-To view demo click on this link: ([https://p2idea.herokuapp.com/]())
+To view demo click on this link: https://p2idea.herokuapp.com/
 
 # Getting Started Locally 
 
