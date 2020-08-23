@@ -19,7 +19,7 @@ calculateTotals = () => {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
 
-  storageArray.forEach((element) => {
+  storageArray.forEach(element => {
     const elementTotal = element.itemPrice * element.itemQty;
     if (element.itemCategory === "meat") {
       meatArray.push(elementTotal);
@@ -36,7 +36,7 @@ calculateTotals = () => {
     cartTotal: arrSum(totalsArray).toFixed(2),
     meatTotal: arrSum(meatArray).toFixed(2),
     greensTotal: arrSum(greensArray).toFixed(2),
-    dairyTotal: arrSum(dairyArray).toFixed(2),
+    dairyTotal: arrSum(dairyArray).toFixed(2)
   };
   cartTotalObj.html(totals.cartTotal);
   return totals;

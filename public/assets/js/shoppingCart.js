@@ -4,7 +4,6 @@ $(document).ready(() => {
   const subTotalObj = $("#subTotal");
   let storageArray = [];
 
-
   if (localStorage.getItem("shoppingCart") !== null) {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
@@ -43,8 +42,6 @@ $(document).ready(() => {
       )
     );
   }
-
-
   cartTotals = calculateTotals();
 
   updateTotals = () => {
