@@ -78,15 +78,24 @@ router.get("/checkoutAuth", (req, res) => {
   }
   res.sendFile(path.join(__dirname, "../public/assets/login.html"));
 });
+
 router.get("/checkout", isAuthenticated, (req, res) => {
-  console.log(req.user);
   const userData = {};
   userData.id = req.user.id;
-  userData.email = req.user.email;
-  userData.firstName = req.user.firstName;
-  userData.lastName = req.user.lastName;
-  userData.credits = req.user.credits;
-  res.render("checkout", userData);
+
+  db.User.findOne({
+    where: {
+      id: userData.id
+    }
+  }).then(data => {
+    console.log(data);
+    userData.email = data.email;
+    userData.firstName = data.firstName;
+    userData.lastName = data.lastName;
+    userData.credits = data.credits;
+    console.log(userData);
+    res.render("checkout", userData);
+  });
 });
 
 router.get("/complete", (req, res) => {
