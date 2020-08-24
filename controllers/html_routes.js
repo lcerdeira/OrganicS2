@@ -115,7 +115,6 @@ router.get("/shopping-cart", (req, res) => {
   res.render("shopping-cart", userData);
 });
 
-
 router.get("/contact", (req, res) => {
   const userData = {};
   if (req.user) {
