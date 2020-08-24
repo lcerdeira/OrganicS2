@@ -3,7 +3,6 @@ $(document).ready(() => {
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
   let storageArray = [];
-
   if (localStorage.getItem("shoppingCart") !== null) {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }

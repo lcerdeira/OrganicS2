@@ -7,14 +7,6 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-router.get("/", (req, res) => {
-  // If the user already has an account send them to the members page
-  if (req.user) {
-    res.redirect("/members");
-  }
-  res.sendFile(path.join(__dirname, "../public/assets/index.html"));
-});
-
 router.get("/login", (req, res) => {
   // If the user already has an account send them to the members page
   if (req.user) {
@@ -101,6 +93,26 @@ router.get("/checkout", isAuthenticated, (req, res) => {
 
 router.get("/complete", (req, res) => {
   res.render("complete", {});
+});
+router.get("/", (req, res) => {
+  const userData = {};
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    userData.authStatus = true;
+  } else {
+    userData.authStatus = false;
+  }
+  res.render("index", userData);
+});
+
+router.get("/shopping-cart", (req, res) => {
+  const userData = {};
+  if (req.user) {
+    userData.authStatus = true;
+  } else {
+    userData.authStatus = false;
+  }
+  res.render("shopping-cart", userData);
 });
 
 module.exports = router;
