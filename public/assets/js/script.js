@@ -7,7 +7,6 @@ $(document).ready(() => {
   }
 
   listEl.on("click", () => {
-    console.log("clicked");
     event.preventDefault();
     const target = $(event.target);
 
@@ -31,7 +30,6 @@ $(document).ready(() => {
           .attr("data-category")
       };
       storageArray.push(shoppingListItem);
-      console.log(storageArray);
       localStorage.setItem("shoppingCart", JSON.stringify(storageArray));
     }
   });

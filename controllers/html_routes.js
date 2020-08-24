@@ -80,13 +80,11 @@ router.get("/checkout", isAuthenticated, (req, res) => {
       id: userData.id
     }
   }).then(data => {
-    console.log(data);
     userData.email = data.email;
     userData.firstName = data.firstName;
     userData.lastName = data.lastName;
     userData.credits = data.credits;
     userData.authStatus = true;
-    console.log(userData);
     res.render("checkout", userData);
   });
 });

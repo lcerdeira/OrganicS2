@@ -55,7 +55,6 @@ $(document).ready(() => {
   }
 
   function handleLoginErr(err) {
-    console.log("Login Error");
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }

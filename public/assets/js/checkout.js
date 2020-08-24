@@ -35,10 +35,14 @@ $(document).ready(() => {
         .replace("$ ", "")
     );
     const userId = $("#place-order").attr("data-userId");
-    currentCredit = parseInt($("#current-credits").text());
+    currentCredit = parseInt(
+      $("#current-credits")
+        .text()
+        .replace("$ ", "")
+    );
+
     if (amount > currentCredit) {
-      console.log("Insufficient credits");
-      console.log(creditWarning.css("display", "block"));
+      creditWarning.css("display", "block");
       return;
     }
 
@@ -84,7 +88,11 @@ $(document).ready(() => {
     event.preventDefault();
 
     const creditAmount = parseInt($("#creditAmount").val());
-    currentCredit = parseInt($("#current-credits").text());
+    currentCredit = parseInt(
+      $("#current-credits")
+        .text()
+        .replace("$ ", "")
+    );
     const newCredit = currentCredit + creditAmount;
     const userId = $("#place-order").attr("data-userId");
 
