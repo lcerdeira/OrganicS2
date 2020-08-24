@@ -38,7 +38,6 @@ router.post("/api/signup", (req, res) => {
 });
 
 router.post("/api/updateCredit", isAuthenticated, (req, res) => {
-  console.log(typeof req.body.credit, req.body.userId);
   credits = parseInt(req.body.credit);
   db.User.update(
     { credits: credits },
@@ -57,7 +56,6 @@ router.post("/api/updateCredit", isAuthenticated, (req, res) => {
 });
 
 router.post("/api/placeOrder", isAuthenticated, (req, res) => {
-  console.log(req.body.userId);
   db.Order.create({
     total: req.body.total,
     addressId: req.body.addressId,

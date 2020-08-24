@@ -37,8 +37,7 @@ $(document).ready(() => {
     const userId = $("#place-order").attr("data-userId");
     currentCredit = parseInt($("#current-credits").text());
     if (amount > currentCredit) {
-      console.log("Insufficient credits");
-      console.log(creditWarning.css("display", "block"));
+      creditWarning.css("display", "block");
       return;
     }
 

@@ -2,7 +2,9 @@ $(document).ready(() => {
   const chTable = $("#shopping-cart");
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
+
   let storageArray = [];
+
   if (localStorage.getItem("shoppingCart") !== null) {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
@@ -30,16 +32,19 @@ $(document).ready(() => {
     const currentItemTotal = $(
       "<td class='shopping__cart__total'> $" + formatItemTotal + "</td>"
     );
-    const currentClose = $(
-      "<td class='shopping__cart__item__close'><span class='icon_close'></span></td>"
+    const currentClose = $("<td class='shopping__cart__item__close'></td>");
+
+    const currentCloseButton = $(
+      "<span class='icon_close close-button'></span>"
     );
+
     chTable.append(
       currentRow.append(
         currentItem,
         currentPrice,
         currentQty,
         currentItemTotal,
-        currentClose
+        currentClose.append(currentCloseButton)
       )
     );
   }
@@ -51,6 +56,17 @@ $(document).ready(() => {
   };
 
   updateTotals();
+
+  const removeItem = $(".close-button");
+  removeItem.on("click", event => {
+    idCode = $(event.target)
+      .closest("tr")
+      .attr("id");
+    id = idCode.replace("item", "");
+    storageArray.splice(id, 1);
+    localStorage.setItem("shoppingCart", JSON.stringify(storageArray));
+    location.reload();
+  });
 
   // Lookat oninput
   // var proQty = $(".pro-qty");
