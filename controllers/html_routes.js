@@ -53,11 +53,9 @@ router.get("/grocery/:category", (req, res) => {
       const formatPrice = parseFloat(element.dataValues.price).toFixed(2);
       itemSet.itemPrice = formatPrice;
       itemSet.itemUnit = element.dataValues.unit;
-
       itemSet.itemQuantity = 1;
       itemSet.itemCategory = element.dataValues.ProductCategory.category;
       itemsArray.push(itemSet);
-      console.log(itemSet);
     });
     myObj = {
       items: itemsArray
