@@ -1,6 +1,7 @@
 const arrSum = arr => arr.reduce((a, b) => a + b, 0);
 const cartQty = $(".itemQty");
 const cartTotalObj = $(".cartTotal");
+console.log("hello");
 
 let storageArray = [];
 if (localStorage.getItem("shoppingCart") !== null) {
@@ -8,6 +9,7 @@ if (localStorage.getItem("shoppingCart") !== null) {
 }
 numItems = storageArray.length;
 cartQty.html(numItems);
+
 calculateTotals = () => {
   const totalsArray = [];
   const meatArray = [];
@@ -38,6 +40,8 @@ calculateTotals = () => {
     greensTotal: arrSum(greensArray).toFixed(2),
     dairyTotal: arrSum(dairyArray).toFixed(2)
   };
-  cartTotalObj.html(totals.cartTotal);
+
   return totals;
 };
+totals = calculateTotals();
+cartTotalObj.html(totals.cartTotal);

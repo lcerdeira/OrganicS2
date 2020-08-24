@@ -3,34 +3,35 @@ $(document).ready(() => {
   const totalObj = $("#total");
   const subTotalObj = $("#subTotal");
   let storageArray = [];
-
   if (localStorage.getItem("shoppingCart") !== null) {
     storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
   }
 
   for (let i = 0; i < storageArray.length; i++) {
     const currentRow = $(
-      "<tr class='shoping__product' id='item" + i + "'></tr>"
+      "<tr class='shopping__product' id='item" + i + "'></tr>"
     );
     const currentItem = $(
-      "<td class='shoping__cart__item'><h5>" +
+      "<td class='shopping__cart__item'><h5>" +
         storageArray[i].itemName +
         "</h5></td>"
     );
     formatPrice = parseFloat(storageArray[i].itemPrice).toFixed(2);
     const currentPrice = $(
-      "<td class='shoping__cart__price'> $" + formatPrice + "</td>"
+      "<td class='shopping__cart__price'> $" + formatPrice + "</td>"
     );
     const currentQty = $(
-      "<td class='shoping__cart__quantity'>" + storageArray[i].itemQty + "</td>"
+      "<td class='shopping__cart__quantity'>" +
+        storageArray[i].itemQty +
+        "</td>"
     );
     const itemTotal = storageArray[i].itemQty * storageArray[i].itemPrice;
     formatItemTotal = itemTotal.toFixed(2);
     const currentItemTotal = $(
-      "<td class='shoping__cart__total'> $" + formatItemTotal + "</td>"
+      "<td class='shopping__cart__total'> $" + formatItemTotal + "</td>"
     );
     const currentClose = $(
-      "<td class='shoping__cart__item__close'><span class='icon_close'></span></td>"
+      "<td class='shopping__cart__item__close'><span class='icon_close'></span></td>"
     );
     chTable.append(
       currentRow.append(

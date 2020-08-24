@@ -1,15 +1,7 @@
 
 USE farmers_market;
-INSERT INTO food
-    (burgerName, devoured)
-VALUES
-    ("The Roadhouse", FALSE),
-    ("The Fireside", FALSE),
-    ("The Trucker", FALSE),
-    ("The Fatman", FALSE),
-    ("The Wee Lad", TRUE);
 
-INSERT INTO Product_categories (category,createdAt,updatedAt) VALUES
+INSERT INTO ProductCategories (category,createdAt,updatedAt) VALUES
 ("meat",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
 ("greens",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
 ("dairy",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
