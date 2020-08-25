@@ -93,8 +93,40 @@ router.get("/api/user_data", (req, res) => {
     });
   }
 });
+router.post("/api/updateInventory", isAuthenticated, async (req, res) => {
+  const request = req.body;
 
-// Create api route for add to cart
+  await request.storageArray.forEach(element => {
+    db.Product.findOne({
+      where: {
+        id: element.itemId
+      }
+    })
+      .then(data => {
+        currentStock = data.dataValues.stock;
+        orderQty = element.itemQty;
+        updateStock = currentStock - orderQty;
+        db.Product.update(
+          { stock: updateStock },
+          {
+            where: {
+              id: data.dataValues.id
+            }
+          }
+        )
+          .then(() => {
+            console.log("update complete");
+          })
+          .catch(err => {
+            console.log(err);
+          });
 
-// Export routes for server.js to use.
+        res.status(200).end();
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+});
+
 module.exports = router;

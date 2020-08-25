@@ -8,6 +8,7 @@ $(document).ready(() => {
   const meatObj = $("#meat-total");
   const dairyObj = $("#dairy-total");
   let currentCredit = {};
+  let storageArray = [];
   cartTotals = calculateTotals();
 
   updateTotals = () => {
@@ -76,11 +77,22 @@ $(document).ready(() => {
           credit: balanceCredit
         })
           .then(() => {
-            window.location.replace("/complete");
+            if (localStorage.getItem("shoppingCart") !== null) {
+              storageArray = JSON.parse(localStorage.getItem("shoppingCart"));
+            }
+
+            $.post("/api/updateInventory", {
+              storageArray: storageArray
+            })
+              .then(() => {
+                localStorage.clear();
+                location.reload();
+              })
+              .catch(err => console.log(err));
+
+            // window.location.replace("/complete");
           })
           .catch(err => console.log(err));
-
-        localStorage.clear();
       })
       .catch(err => console.log(err));
   });
