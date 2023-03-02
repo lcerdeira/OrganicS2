@@ -20,7 +20,7 @@
     "bcryptjs": "2.4.3",
     "express-session": "^1.16.1",
     "mysql2": "^1.6.5",
-    "passport": "^0.4.0",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "sequelize": "^6.29.0",
     "uuid": "^8.3.0"
